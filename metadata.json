@@ -1,0 +1,6 @@
+{
+  "name": "virtual Keyboard",
+  "identifier": "com.domain.app.virtualKeyboard",
+  "version": "1.0.0",
+  "icon": "./static/icon.png"
+}
