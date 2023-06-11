@@ -1,4 +1,5 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
+import { InputField } from '@lightningjs/ui'
 
 export default class App extends Lightning.Component {
   static getFonts() {
@@ -11,6 +12,14 @@ export default class App extends Lightning.Component {
         w: 1920,
         h: 1080,
         rect: true,
+      },
+      InputFieldWrapper: {
+        x: 600,
+        y: 150,
+        rect: true,
+        h: 50,
+        w: 460,
+        InputField: { type: InputField },
       },
       Text: {
         mount: 1,
@@ -35,7 +44,7 @@ export default class App extends Lightning.Component {
           {
             t: '',
             p: 'color',
-            v: { 0: { v: 0xfffbb03b }, 0.5: { v: 0xfff46730 }, 0.8: { v: 0xfffbb03b } },
+            v: { 0: { v: 0xff000000 }, 0.5: { v: 0xff808080 }, 0.8: { v: 0xff000000 } },
           },
         ],
       })
