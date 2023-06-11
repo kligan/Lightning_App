@@ -10,22 +10,14 @@ export default class App extends Lightning.Component {
       Background: {
         w: 1920,
         h: 1080,
-        color: 0xfffbb03b,
-        src: Utils.asset('images/background.png'),
-      },
-      Logo: {
-        mountX: 0.5,
-        mountY: 1,
-        x: 960,
-        y: 600,
-        src: Utils.asset('images/logo.png'),
+        rect: true,
       },
       Text: {
-        mount: 0.5,
-        x: 960,
-        y: 720,
+        mount: 1,
+        x: 1060,
+        y: 120,
         text: {
-          text: "Let's start Building!",
+          text: 'Virtual Keyboard',
           fontFace: 'Regular',
           fontSize: 64,
           textColor: 0xbbffffff,
@@ -37,7 +29,7 @@ export default class App extends Lightning.Component {
   _init() {
     this.tag('Background')
       .animation({
-        duration: 15,
+        duration: 20,
         repeat: -1,
         actions: [
           {
