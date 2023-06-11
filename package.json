@@ -1,5 +1,5 @@
 {
-  "name": "com.domain.app.virtualKeyboard",
+  "name": "com.domain.app.virtualkeyboard",
   "description": "virtual Keyboard",
   "dependencies": {
     "@lightningjs/sdk": "^5.3.2"
@@ -11,7 +11,8 @@
     ]
   },
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "eslint": "eslint ./"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
