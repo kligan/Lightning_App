@@ -36,11 +36,12 @@ export default class App extends Lightning.Component {
           InputField: { x: 20, y: 20, type: InputField },
         },
         Keyboard: {
-          y: 500,
-          w: 500,
+          y: 380,
+          w: 1920,
           type: Keyboard,
           config: virtualKeyboardConfig,
-          currentLayout: 'abc',
+          currentLayout: 'keys',
+          maxCharacters: 30,
         },
       },
     }
@@ -67,48 +68,106 @@ export default class App extends Lightning.Component {
     this.tag('Keyboard').inputField(inputField)
   }
 
+  _active() {
+    super._active()
+    this.tag('InputFieldWrapper').color = Colors(this.fireAncestors('$getThemeColor'))
+      .darker(0.5)
+      .get()
+  }
+
   _getFocused() {
     return this.tag('Keyboard')
   }
+}
 
-  static get icon() {
-    return 'images/keyboard.png'
+class Key extends BaseKey {
+  _firstActive() {
+    this.labelColors = {
+      unfocused: Colors('black').get(),
+      focused: Colors('white').get(),
+    }
+    this.backgroundColors = {
+      unfocused: Colors('white').get(),
+      focused: Colors('black').get(),
+    }
+  }
+
+  static get width() {
+    return 60
+  }
+  static get height() {
+    return 60
+  }
+}
+
+class IconKey extends BaseKey {
+  set icon(src) {
+    this._icon = src
+    this._update()
+  }
+
+  get icon() {
+    return this._icon
+  }
+
+  _active() {
+    this.labelColors = {
+      unfocused: 0xffffc0cb,
+      focused: Colors('white').get(),
+    }
+    this.backgroundColors = {
+      unfocused: Colors('white').get(),
+      focused: Colors('white').get(),
+    }
+  }
+
+  _update() {
+    this.patch({
+      Label: {
+        src: Utils.asset(this.icon),
+      },
+    })
+  }
+
+  static get height() {
+    return 60
+  }
+
+  static get width() {
+    return 160
   }
 }
 
 const virtualKeyboardConfig = {
   layouts: {
-    123: [
+    keys: [
       ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-      [
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-        'G',
-        'H',
-        'I',
-        'J',
-        'K',
-        'L',
-        'M',
-        'N',
-        'O',
-        'P',
-        'Q',
-        'R',
-        'S',
-        'T',
-        'U',
-        'V',
-        'W',
-        'X',
-        'Y',
-        'Z',
-      ],
+      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'],
+      ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
       ['Space', 'Backspace'],
     ],
+  },
+  styling: {
+    align: 'center',
+    horizontalSpacing: 5,
+    verticalSpacing: 20,
+    Row2: {
+      spacing: 10,
+    },
+  },
+  buttonTypes: {
+    default: {
+      type: Key,
+    },
+    Backspace: {
+      type: IconKey,
+      w: 9,
+      icon: 'images/delete.png',
+    },
+    Space: {
+      type: IconKey,
+      w: 360,
+      icon: 'images/delete.png',
+    },
   },
 }
