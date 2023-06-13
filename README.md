@@ -2,6 +2,14 @@
 
 ## com.domain.app.virtualKeyboard
 
+This is a lightningJs app which renders a virtual keyboard using webrenderer.
+
+Key features of the keyboard
+A view that contains a text field and a list which contains alphanumeric characters
+Pressing the arrow keys will navigate through the list of characters
+Pressing the ‘select’ key will append the focused character to the text field
+Pressing the ‘delete’ key will remove the last character from the text field
+
 ### Getting started
 
 > Before you follow the steps below, make sure you have the
