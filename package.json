@@ -13,16 +13,39 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "eslint": "eslint ./"
+    "eslint": "eslint ./",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "babel-eslint": "^10.0.3",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "jest-webgl-canvas-mock": "^2.5.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "resources": "usable"
+    },
+    "setupFiles": [
+      "jest-webgl-canvas-mock"
+    ],
+    "moduleNameMapper": {
+      "^src(.*)": "<rootDir>/src$1",
+      "^test(.*)": "<rootDir>/test$1"
+    },
+    "transform": {
+      "^.+\\.[m|t]?js$": "babel-jest"
+    },
+    "transformIgnorePatterns": []
   }
 }

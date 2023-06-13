@@ -4,8 +4,9 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true,
   },
-  plugins: ['prettier'],
+  plugins: ['jest', 'prettier'],
   extends: ['eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
   rules: {
     quotes: [2, 'single', 'avoid-escape'],
