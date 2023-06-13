@@ -8,12 +8,10 @@ export default class App extends Lightning.Component {
 
   static _template() {
     return {
-      ...super._template(),
       Background: {
         w: 1920,
         h: 1080,
         rect: true,
-        color: 0xffff0000,
       },
       Text: {
         mount: 1,
@@ -21,23 +19,33 @@ export default class App extends Lightning.Component {
         y: 120,
         text: {
           text: 'Virtual Keyboard',
-          fontFace: 'Regular',
           fontSize: 64,
-          textColor: 0xbbffffff,
+          textColor: Colors('white').get(),
         },
       },
       Content: {
         InputFieldWrapper: {
-          x: 600,
-          y: 150,
+          x: 530,
+          y: 130,
           rect: true,
-          h: 50,
-          w: 460,
-          InputField: { x: 20, y: 20, type: InputField },
+          h: 75,
+          w: 650,
+          InputField: {
+            x: 20,
+            y: 20,
+            type: InputField,
+            description: 'Type here....',
+            inputText: {
+              textColor: Colors('black').get(),
+            },
+            cursor: {
+              color: Colors('black').get(),
+            },
+          },
         },
         Keyboard: {
-          y: 380,
-          w: 1920,
+          y: 250,
+          w: 1700,
           type: Keyboard,
           config: virtualKeyboardConfig,
           currentLayout: 'keys',
@@ -68,13 +76,6 @@ export default class App extends Lightning.Component {
     this.tag('Keyboard').inputField(inputField)
   }
 
-  _active() {
-    super._active()
-    this.tag('InputFieldWrapper').color = Colors(this.fireAncestors('$getThemeColor'))
-      .darker(0.5)
-      .get()
-  }
-
   _getFocused() {
     return this.tag('Keyboard')
   }
@@ -88,7 +89,7 @@ class Key extends BaseKey {
     }
     this.backgroundColors = {
       unfocused: Colors('white').get(),
-      focused: Colors('black').get(),
+      focused: 0xff808080,
     }
   }
 
@@ -112,12 +113,7 @@ class IconKey extends BaseKey {
 
   _active() {
     this.labelColors = {
-      unfocused: 0xffffc0cb,
-      focused: Colors('white').get(),
-    }
-    this.backgroundColors = {
-      unfocused: Colors('white').get(),
-      focused: Colors('white').get(),
+      focused: 0xff808080,
     }
   }
 

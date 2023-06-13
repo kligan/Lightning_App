@@ -26,8 +26,8 @@ describe('Virtual Keyboard', () => {
     const virtualKeyboardApp = virtualKeyboard._getFocused()
 
     // test app name
-    let text = virtualKeyboardApp.tag('Text').text.text
-    expect(text).toEqual('Virtual Keyboard')
+    let appName = virtualKeyboardApp.tag('Text').text.text
+    expect(appName).toEqual('Virtual Keyboard')
 
     // test inputfield is wrapped in a rectangle
     let inputField = virtualKeyboardApp.tag('InputFieldWrapper').rect
