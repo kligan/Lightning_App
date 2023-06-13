@@ -151,22 +151,25 @@ const virtualKeyboardConfig = {
     align: 'center',
     horizontalSpacing: 5,
     verticalSpacing: 20,
-    Row2: {
-      spacing: 10,
+    spacing: 10,
+    Row4: {
+      spacing: 50,
     },
   },
   buttonTypes: {
     default: {
       type: Key,
     },
-    Backspace: {
-      type: IconKey,
-      w: 9,
-      icon: 'images/delete.png',
-    },
     Space: {
       type: IconKey,
-      w: 360,
+      w: 280,
+      y: 50,
+      icon: 'images/select.png',
+    },
+    Backspace: {
+      type: IconKey,
+      w: 110,
+      y: 50,
       icon: 'images/delete.png',
     },
   },
