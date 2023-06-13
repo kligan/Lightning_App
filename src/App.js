@@ -23,6 +23,14 @@ export default class App extends Lightning.Component {
           textColor: Colors('white').get(),
         },
       },
+      Ball: {
+        mount: 0.5,
+        x: 0,
+        y: 500,
+        w: 100,
+        h: 50,
+        src: Utils.asset('images/ball.png'),
+      },
       Content: {
         InputFieldWrapper: {
           x: 530,
@@ -66,6 +74,18 @@ export default class App extends Lightning.Component {
             p: 'color',
             v: { 0: { v: 0xff000000 }, 0.5: { v: 0xff808080 }, 0.8: { v: 0xff000000 } },
           },
+        ],
+      })
+      .start()
+
+    this.tag('Ball')
+      .animation({
+        duration: 6,
+        repeat: -1,
+        stopMethod: 'immediate',
+        actions: [
+          { p: 'x', v: { 0: 50, 0.25: 250, 0.5: 500, 0.75: 450, 1: 50 } },
+          { p: 'y', v: { 0: 50, 0.25: 250, 0.5: 50, 0.75: 100, 1: 50 } },
         ],
       })
       .start()
