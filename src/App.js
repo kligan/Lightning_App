@@ -5,7 +5,7 @@ export default class App extends Lightning.Component {
   static getFonts() {
     return [{ family: 'Regular', url: Utils.asset('fonts/Roboto-Regular.ttf') }]
   }
-
+  // defining the component template for the virtual keyboard with it's respectie elements
   static _template() {
     return {
       Background: {
@@ -63,6 +63,10 @@ export default class App extends Lightning.Component {
     }
   }
 
+  // component lifecycle events
+
+  // -init attched for the first time
+  // Background animation
   _init() {
     this.tag('Background')
       .animation({
@@ -78,6 +82,7 @@ export default class App extends Lightning.Component {
       })
       .start()
 
+    // Ball animation
     this.tag('Ball')
       .animation({
         duration: 6,
@@ -91,16 +96,19 @@ export default class App extends Lightning.Component {
       .start()
   }
 
+  // attached to the render tree, top-down(for the first time)
   _setup() {
     const inputField = this.tag('InputField')
     this.tag('Keyboard').inputField(inputField)
   }
 
+  // focusing on the keyboard componen as the active component
   _getFocused() {
     return this.tag('Keyboard')
   }
 }
 
+// logic for the keyboard key press
 class Key extends BaseKey {
   _firstActive() {
     this.labelColors = {
@@ -121,6 +129,7 @@ class Key extends BaseKey {
   }
 }
 
+// logic for the icon keys (select and delete) on the keyboard
 class IconKey extends BaseKey {
   set icon(src) {
     this._icon = src
@@ -154,6 +163,7 @@ class IconKey extends BaseKey {
   }
 }
 
+// defining configuartion object with it's properties for the keyboard
 const virtualKeyboardConfig = {
   layouts: {
     keys: [
